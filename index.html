@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muro de Reconocimientos - CREP</title>
+    <style>
+        /* ======= ESTILOS GENERALES ======= */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+		/* ======= Forma del logo ======= */
+		.logo {
+  				width: 120px;
+ 				height: auto;
+ 				border-radius: 0; 
+		}
+		/* ======= 	Deslizamiento suave ======= */
+		html {
+  				scroll-behavior: smooth;
+		}
+
+
+        /* ======= NAVBAR ======= */
+        nav {
+            background-color: #7b1b1b; /* Bordó del CREP */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: left;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #a32929;
+        }
+
+        /* ======= MENÚ HAMBURGUESA ======= */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 15px;
+        }
+
+        .menu-toggle span {
+            background-color: white;
+            height: 3px;
+            width: 25px;
+            margin: 4px 0;
+            border-radius: 2px;
+        }
+
+        #menu-checkbox {
+            display: none;
+        }
+
+      /* ======= VERSIÓN MÓVIL ======= */
+@media (max-width: 768px) {
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #800000;
+    text-align: center;
+
+    /* Efecto suave */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
+
+  #menu-checkbox:checked + .menu-toggle + ul {
+    max-height: 300px; /* ajustá si tenés más o menos enlaces */
+    opacity: 1;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul li {
+    padding: 15px 0;
+  }
+}
+
+        /* ======= HEADER ======= */
+        header {
+    background-image: url("img/crep.jpg"); /* ← tu imagen de portada */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+}
+
+/* Efecto oscuro encima de la imagen */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(123, 0, 0, 0.3); /* filtro bordó semitransparente */
+    z-index: 0;
+}
+
+header h1, header h2, header img {
+    position: relative;
+    z-index: 1;
+}
+
+
+        header img {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin: 15px 0 5px;
+        }
+
+        header h2 {
+            font-weight: 400;
+            margin: 0;
+        }
+
+        /* ======= MISIÓN Y VISIÓN ======= */
+        .mision-vision {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: white;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .mision, .vision {
+            background-color: #fff4f4;
+            border-left: 5px solid #7b1b1b;
+            padding: 20px;
+            width: 350px;
+            border-radius: 10px;
+        }
+
+        .mision h3, .vision h3 {
+            color: #7b1b1b;
+            margin-top: 0;
+        }
+
+        /* ======= ALUMNOS DESTACADOS ======= */
+       .reconocimientos {
+  		  text-align: center;
+  		  padding: 40px 20px;
+		}
+
+		.reconocimientos h2 {
+    	 color: #7b1b1b;
+   		 margin-bottom: 30px;
+		}
+
+		.alumnos {
+   		 display: grid;
+   		 grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   		 gap: 25px;
+   		 max-width: 1000px;
+   		 margin: 0 auto;
+		}
+
+		.alumno {
+  		  background-color: white;
+ 		  border-radius: 10px;
+   		  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      	  padding: 15px;
+    	  transition: transform 0.3s ease, box-shadow 0.3s ease; /* animación más suave */
+    	  cursor: pointer;
+		}
+
+		.alumno:hover,
+		.alumno:active {
+   			 transform: scale(1.05);
+   			 box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* efecto de sombra */
+		}
+
+		.alumno img {
+ 		   width: 100%;
+  		  border-radius: 10px;
+  		  height: 200px;
+   		 object-fit: cover; /* evita que se deforme la imagen */
+	}
+
+		.alumno h3 {
+    	  margin: 10px 0 5px;
+  		  color: #7b1b1b;
+		}
+
+		.alumno p {
+  		  margin: 3px 0;
+		}
+
+		/* Ajustes para móviles */
+		@media (max-width: 768px) {
+			.alumnos {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 15px;
+			}
+
+			.alumno img {
+				height: 150px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.alumnos {
+				grid-template-columns: 1fr;
+				gap: 10px;
+			}
+
+			.alumno img {
+				height: 130px;
+			}
+		}
+
+
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 768px) {
+    .alumnos-destacados {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .alumno img {
+        max-width: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .alumnos-destacados {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .alumno img {
+        max-width: 120px;
+    }
+}
+		/* ======= PIE DE PÁGINA ======= */
+        footer {
+            background-color: #7b1b1b;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- ======= NAVEGACIÓN ======= -->
+<nav>
+  <!-- Checkbox oculto para controlar el menú -->
+  <input type="checkbox" id="menu-checkbox">
+  
+  <!-- Botón de menú (las tres rayitas) -->
+  <label for="menu-checkbox" class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <!-- Enlaces del menú -->
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#reconocimientos">Alumnos Destacados</a></li>
+    <li><a href="#misionvision">Misión y Visión</a></li>
+    <li><a href="#contacto">Contáctanos</a></li>
+  </ul>
+</nav>
+
+
+    <!-- ======= ENCABEZADO ======= -->
+<header id="inicio">
+        <img src="img/logo.png" class="logo" alt="Logo del CREP">
+        <h1>Centro Regional de Educación Pilar</h1>
+        <h2>Muro de Reconocimientos</h2>
+    </header>
+
+    
+
+    <!-- ======= ALUMNOS DESTACADOS ======= -->
+<section class="reconocimientos" id="reconocimientos">
+        <h2>Alumnos Destacados 2024 - 2025</h2>
+        <div class="alumnos">
+            <div class="alumno">
+                <img src="img/Fiorella 3.png" alt="Foto del alumno">
+                <h3>Fiorella Gonzáles</h3>
+                <p>Destacada en:</p>
+                <p>Básquetbol, campeona nacional 5 veces, 3 mvp, 3 quinteto ideal, selección paraguaya</p>
+            </div>
+
+            <div class="alumno">
+                <img src="img/Alma 3.png" alt="Foto del alumno">
+                <h3>Alma Ortiz</h3>
+                <p>Destacada en:</p>
+                <p>Canto, Danza y Bandaliza</p>
+            </div>
+
+            <div class="alumno">
+                <img src="img/bethiana 3.png" alt="Foto del alumno">
+                <h3>Bethiana Araujo</h3>
+                <p>Destacada en:</p>
+                <p>Miss CREP</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/Gino 3.png" alt="Foto del alumno">
+                <h3>Gino Smorlesi</h3>
+                <p>Destacado en:</p>
+                <p>Canto</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/Iris 3.png" alt="Foto del alumno">
+                <h3>Iris Franco</h3>
+                <p>Destacada en:</p>
+                <p>Canto, Centro de estudiantes y Bandaliza</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/Jose 3.png" alt="Foto del alumno">
+                <h3>Jose Rojas</h3>
+                <p>Destacado en:</p>
+                <p>Ajedrez y Concurso del saber</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/lucia 3.png" alt="Foto del alumno">
+                <h3>Lucía Benitez</h3>
+                <p>Destacada en:</p>
+                <p>Danza, Bandaliza y Centro de estudiantes</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/Melissa 3.png" alt="Foto del alumno">
+                <h3>Melissa Jiménez</h3>
+                <p>Destacada en:</p>
+                <p>Básquetbol</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/Nicolas 3.png" alt="Foto del alumno">
+                <h3>Nicolas Mellone</h3>
+                <p>Destacado en:</p>
+                <p>Canto</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/Patricia 3.png" alt="Foto del alumno">
+                <h3>Patricia Benítez</h3>
+                <p>Destacada en:</p>
+                <p>Danza, Bandaliza</p>
+            </div>
+			
+			<div class="alumno">
+                <img src="img/Paula 3.png" alt="Foto del alumno">
+                <h3>Paula Pérez</h3>
+                <p>Destacada en:</p>
+                <p>Deportes, Bandaliza y Centro de estudiantes</p>
+            </div>
+        </div>
+	<!-- ======= MISIÓN Y VISIÓN ======= -->
+<section class="mision-vision" id="misionvision">
+        <div class="mision">
+            <h3>MISIÓN</h3>
+            <p>Institución formadora de estudiantes competentes que propicia prácticas pedagógicas experimentales e innovadoras de calidad, comprometida con el desarrollo de la región a través de la formación de educandos, forjadores de una nueva generación con ideales democráticos, conscientes y activos en la conservación del medio ambiente.</p>
+        </div>
+        <div class="vision">
+            <h3>VISIÓN</h3>
+            <p>Institución Educativa comprometidad con el fortalecimiento de competencias a través de propuestas educativas innovadoras e inclusivas, con metodologías basadas en la investigación - acción e internalización de valores como generadores de cambios en todos los niveles de enseñanza, en armonía con el medio ambiente, respondiendo a las demndas sociales y situaciones de riesgos.</p>
+        </div>
+    </section>
+    </section>
+
+    <!-- ======= CONTACTO ======= -->
+    <section id="contacto" style="text-align: center; padding: 40px 20px;">
+        <h2 style="color: #7b1b1b;">Contáctanos</h2>
+        <p>Puedes comunicarte con nosotros al Teléfono <b>0786 234 148</b></p>
+        <p>O visitar nuestra institución en <b>Sargento Azzarini entre Yegros y General Caballero</b></p>
+		<p><b>Pilar - Paraguay</b></p>
+    </section>
+
+    <!-- ======= PIE DE PÁGINA ======= -->
+    <footer>
+        © 2025 Centro Regional de Educación Pilar - Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
