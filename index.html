@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muro de Reconocimientos - CREP</title>
-    <style>
+    <style>0
         /* ======= ESTILOS GENERALES ======= */
         body {
             font-family: "Segoe UI", Arial, sans-serif;
@@ -12,12 +12,7 @@
             background-color: #f8f8f8;
             color: #333;
         }
-		/* ======= Forma del logo ======= */
-		.logo {
-  				width: 120px;
- 				height: auto;
- 				border-radius: 0; 
-		}
+		
 		/* ======= 	Deslizamiento suave ======= */
 		html {
   				scroll-behavior: smooth;
@@ -115,7 +110,7 @@
     background-position: center;
     color: white;
     text-align: center;
-    padding: 100px 20px;
+    padding: 160px 20px 100px;
     position: relative;
 }
 
@@ -274,12 +269,16 @@ header h1, header h2, header img {
 }
 		/* ======= PIE DE PÁGINA ======= */
         footer {
-            background-color: #7b1b1b;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 0.9em;
-        }
+    background-color: #7b1b1b;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+}
+footer p {
+    margin: 5px 0;
+}
+
 
     </style>
 </head>
@@ -300,8 +299,8 @@ header h1, header h2, header img {
   <!-- Enlaces del menú -->
   <ul>
     <li><a href="#inicio">Inicio</a></li>
+	<li><a href="#misionvision">Misión y Visión</a></li>
     <li><a href="#reconocimientos">Alumnos Destacados</a></li>
-    <li><a href="#misionvision">Misión y Visión</a></li>
     <li><a href="#contacto">Contáctanos</a></li>
   </ul>
 </nav>
@@ -309,19 +308,28 @@ header h1, header h2, header img {
 
     <!-- ======= ENCABEZADO ======= -->
 <header id="inicio">
-        <img src="img/logo.png" class="logo" alt="Logo del CREP">
-        <h1>Centro Regional de Educación Pilar</h1>
-        <h2>Muro de Reconocimientos</h2>
+        
+        
+        <h1>Muro de Reconocimientos</h1>
     </header>
-
-    
-
+<!-- ======= MISIÓN Y VISIÓN ======= -->
+<section class="mision-vision" id="misionvision">
+        <div class="mision">
+            <h3>MISIÓN</h3>
+            <p>Institución formadora de estudiantes competentes que propicia prácticas pedagógicas experimentales e innovadoras de calidad, comprometida con el desarrollo de la región a través de la formación de educandos, forjadores de una nueva generación con ideales democráticos, conscientes y activos en la conservación del medio ambiente.</p>
+        </div>
+        <div class="vision">
+            <h3>VISIÓN</h3>
+            <p>Institución Educativa comprometidad con el fortalecimiento de competencias a través de propuestas educativas innovadoras e inclusivas, con metodologías basadas en la investigación - acción e internalización de valores como generadores de cambios en todos los niveles de enseñanza, en armonía con el medio ambiente, respondiendo a las demndas sociales y situaciones de riesgos.</p>
+        </div>
+    </section>
+ 
     <!-- ======= ALUMNOS DESTACADOS ======= -->
 <section class="reconocimientos" id="reconocimientos">
         <h2>Alumnos Destacados 2024 - 2025</h2>
         <div class="alumnos">
             <div class="alumno">
-                <img src="img/Fiorella 3.png" alt="Foto del alumno">
+                <img src="img/Fiorella 7.png" alt="Foto del alumno">
                 <h3>Fiorella Gonzáles</h3>
                 <p>Destacada en:</p>
                 <p>Básquetbol, campeona nacional 5 veces, 3 mvp, 3 quinteto ideal, selección paraguaya</p>
@@ -397,17 +405,6 @@ header h1, header h2, header img {
                 <p>Deportes, Bandaliza y Centro de estudiantes</p>
             </div>
         </div>
-	<!-- ======= MISIÓN Y VISIÓN ======= -->
-<section class="mision-vision" id="misionvision">
-        <div class="mision">
-            <h3>MISIÓN</h3>
-            <p>Institución formadora de estudiantes competentes que propicia prácticas pedagógicas experimentales e innovadoras de calidad, comprometida con el desarrollo de la región a través de la formación de educandos, forjadores de una nueva generación con ideales democráticos, conscientes y activos en la conservación del medio ambiente.</p>
-        </div>
-        <div class="vision">
-            <h3>VISIÓN</h3>
-            <p>Institución Educativa comprometidad con el fortalecimiento de competencias a través de propuestas educativas innovadoras e inclusivas, con metodologías basadas en la investigación - acción e internalización de valores como generadores de cambios en todos los niveles de enseñanza, en armonía con el medio ambiente, respondiendo a las demndas sociales y situaciones de riesgos.</p>
-        </div>
-    </section>
     </section>
 
     <!-- ======= CONTACTO ======= -->
@@ -419,9 +416,10 @@ header h1, header h2, header img {
     </section>
 
     <!-- ======= PIE DE PÁGINA ======= -->
-    <footer>
-        © 2025 Centro Regional de Educación Pilar - Todos los derechos reservados.
-    </footer>
+    <footer id="contacto">
+    <p>© 2025 Centro Regional de Educación Pilar</p>
+    <p><strong>Autores:</strong> Pablo Pereira, Oliver Larroza, Roni Barrios, Henry Vallejos</p>
+</footer>
 
 </body>
 </html>
